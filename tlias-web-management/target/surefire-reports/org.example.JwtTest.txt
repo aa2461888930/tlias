@@ -1,0 +1,25 @@
+-------------------------------------------------------------------------------
+Test set: org.example.JwtTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.522 s <<< FAILURE! -- in org.example.JwtTest
+org.example.JwtTest.testParseJWT -- Time elapsed: 0.014 s <<< ERROR!
+io.jsonwebtoken.MalformedJwtException: Unable to read JSON value: "alg":"HS256"}
+	at io.jsonwebtoken.impl.DefaultJwtParser.readValue(DefaultJwtParser.java:554)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:252)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:481)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:541)
+	at org.example.JwtTest.testParseJWT(JwtTest.java:34)
+Caused by: com.fasterxml.jackson.core.JsonParseException: Illegal character ((CTRL-CHAR, code 19)): only regular white space (\r, \n, \t) is allowed between tokens
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 2]
+	at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:2599)
+	at com.fasterxml.jackson.core.JsonParser._constructReadException(JsonParser.java:2625)
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._throwInvalidSpace(ParserMinimalBase.java:778)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._skipWSOrEnd(ReaderBasedJsonParser.java:2508)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser.nextToken(ReaderBasedJsonParser.java:673)
+	at com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:5125)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:5028)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3954)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3922)
+	at io.jsonwebtoken.impl.DefaultJwtParser.readValue(DefaultJwtParser.java:552)
+	... 4 more
+

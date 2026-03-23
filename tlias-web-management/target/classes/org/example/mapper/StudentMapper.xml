@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.StudentMapper">
+    <!-- 动态sql: <where>标签 生成where关键字 动态构建sql语句, 并去除多余的 or 或者 and-->
+    <select id="list" resultType="org.example.pojo.Student">
+        select
+            s.*, c.name clazz_name
+        from
+            student s left join clazz c
+        on
+            s.clazz_id = c.id
+        <where>
+            <if test="name != null and name!=''">
+                s.name like concat('%',#{name}, '%')
+            </if>
+            <if test="degree != null">
+                and s.degree=#{degree}
+            </if>
+            <if test="clazzId != null">
+                and s.clazz_id=#{clazzId}
+            </if>
+        </where>
+        order by s.update_time desc
+    </select>
+
+    <delete id="deleteByIds">
+        delete from student where id in 
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!-- 根据 id 更新员工信息 -->
+    <!-- set 标签和 where 标签一样，可以避免有多余的逗号。if标签：动态sql-->
+    <update id="updateById">
+        update student
+        <set>
+            <if test="name != null and name!=''">
+                name=#{name},
+            </if>
+            <if test="no != null and no != ''">
+                no=#{no},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone=#{phone},
+            </if>
+            <if test="gender != null">
+                gender=#{gender},
+            </if>
+            <if test="degree != null">
+                degree=#{degree},
+            </if>
+            <if test="idCard != null and idCard != ''">
+                id_card=#{idCard},
+            </if>
+            <if test="isCollege != null">
+                is_college=#{isCollege},
+            </if>
+            <if test="address != null and address != ''">
+                address=#{address},
+            </if>
+            <if test="graduationDate != null">
+                graduation_date=#{graduationDate},
+            </if>
+            <if test="violationCount != null">
+                violation_count=#{violationCount},
+            </if>
+            <if test="violationScore != null">
+                violation_score=#{violationScore},
+            </if>
+            <if test="clazzId != null">
+                clazz_id=#{clazzId}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="getStudentDegreeData" resultType="org.example.pojo.StudentDegree">
+        select
+            (case
+                 when degree=1 then '初中'
+                 when degree=2 then '高中'
+                 when degree=3 then '大专'
+                 when degree=4 then '本科'
+                 when degree=5 then '硕士'
+                 when degree=6 then '博士'
+                 else '其他' end) name,
+            count(*) value
+        from
+            student
+        group by
+            degree;
+    </select>
+
+</mapper>

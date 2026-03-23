@@ -1,0 +1,6 @@
+# 阿里云OSS
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    bucketName: web-tlias-dkj
+    region: cn-beijing

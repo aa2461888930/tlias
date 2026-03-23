@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/tlias-web-management/src/main/java/org/example/mapper/EmpMapper.java" value="ccfadf57-640e-45b3-90eb-44923a18bd77" />
+    <file url="file://$PROJECT_DIR$/tlias-web-management/src/main/java/org/example/mapper/OperateLogMapper.java" value="ccfadf57-640e-45b3-90eb-44923a18bd77" />
+    <file url="file://$PROJECT_DIR$/tlias-web-management/src/main/resources/org/example/mapper/EmpMapper.xml" value="ccfadf57-640e-45b3-90eb-44923a18bd77" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/ccfadf57-640e-45b3-90eb-44923a18bd77/console.sql" value="ccfadf57-640e-45b3-90eb-44923a18bd77" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/ccfadf57-640e-45b3-90eb-44923a18bd77/console_1.sql" value="ccfadf57-640e-45b3-90eb-44923a18bd77" />
+  </component>
+</project>
