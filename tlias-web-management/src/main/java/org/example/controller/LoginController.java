@@ -26,4 +26,15 @@ public class LoginController {
         return Result.error("用户名或密码错误～～");
 
     }
+
+    @PostMapping("/query")
+    public Result query(@RequestBody Emp emp){ // 使用 Emp 类成员变量接收 username,password
+        log.info("登录: {}", emp);
+        LoginInfo info = empService.login(emp);
+        if (info != null){
+            return Result.success(info);
+        }
+        return Result.error("用户名或密码错误～～");
+
+    }
 }
